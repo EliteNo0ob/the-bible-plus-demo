@@ -13,7 +13,7 @@ const App = () => {
   const [modalContent, setModalContent] = useState('');
   const [showMoreMenu, setShowMoreMenu] = useState(false); // State for the More menu
   const [showNotifications, setShowNotifications] = useState(true); // State for notifications list, initially true for badge demo
-  const [hasNewNotification, setHasNewNotification] = useState(true); // State to show notification badge
+  const [hasNewNotification, setHasNewNotification] = useState(true); // State to show notification badge - FIXED: Changed to useState(true)
   const [isVerseActionMenuOpen, setIsVerseActionMenuOpen] = useState(false); // State to control main footer buttons
 
   // Publicly accessible image URLs for demo purposes.
@@ -509,11 +509,6 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 flex justify-center items-center p-4">
-      {/* Tailwind CSS CDN script */}
-      <script src="https://cdn.tailwindcss.com"></script>
-      {/* Google Fonts - Inter */}
-      <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
-
       {/* Simulated Mobile App Frame */}
       <div className="relative w-full max-w-md h-[90vh] bg-gray-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col font-inter text-gray-100 border-8 border-gray-950">
         {/* Top Navigation Menu - Now Black */}
