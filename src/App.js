@@ -27,7 +27,8 @@ const App = () => {
 
   // Publicly accessible image URLs for demo purposes.
   // UPDATED: Using local paths now
-  const profilePicUrl = "/images/profile-br.png"; // Assuming you saved it as profile-br.png in public/images/
+  // Changed to .jpg as per user's uploaded file type
+  const profilePicUrl = "/images/profile-br.jpg"; // Assuming you saved it as profile-br.jpg in public/images/
   const verseBgImageUrl = "/images/verse-bg.jpg"; // Assuming you saved it as verse-bg.jpg in public/images/
 
   // Function to get time-based greeting
@@ -582,7 +583,7 @@ const App = () => {
                   }}
                 ></div>
                 {/* White Transparent Box for Text */}
-                <div className="relative z-10 bg-white bg-opacity-75 p-4 rounded-lg mx-4"> {/* Added mx-4 for horizontal padding */}
+                <div className="relative z-10 bg-white bg-opacity-80 p-4 rounded-lg mx-4"> {/* Changed bg-opacity-75 to bg-opacity-80 */}
                   <p className="text-lg italic text-gray-900 mb-3"> {/* Changed text color to gray-900 */}
                     "{currentVerse.text}"
                   </p>
@@ -753,7 +754,7 @@ const App = () => {
                 // Fallback for image loading errors
                 onError={(e) => {
                   e.target.onerror = null; // Prevent infinite loop if fallback also fails
-                  e.target.src = '/images/profile-br.png'; // Fallback to local
+                  e.target.src = '/images/profile-br.jpg'; // Fallback to local .jpg
                 }}
               />
             </div>
@@ -813,7 +814,7 @@ const App = () => {
                     // Fallback for image loading errors
                     onError={(e) => {
                       e.target.onerror = null; // Prevent infinite loop if fallback also fails
-                      e.target.src = '/images/profile-br.png'; // Fallback to local
+                      e.target.src = '/images/profile-br.jpg'; // Fallback to local .jpg
                     }}
                   />
                 </div>
