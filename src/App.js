@@ -16,7 +16,7 @@ const App = () => {
   const [username, setUsername] = useState('Brandon');
   const [currentVerse, setCurrentVerse] = useState({});
   const [showModal, setShowModal] = useState(false);
-  const [modalContent, setModalContent] = useState('');
+  const [modalContent, setModalContent] = '';
   const [showMoreMenu, setShowMoreMenu] = useState(false);
   const [showNotifications, setShowNotifications] = useState(true);
   const [hasNewNotification, setHasNewNotification] = useState(true);
@@ -583,7 +583,7 @@ const App = () => {
                   }}
                 ></div>
                 {/* White Transparent Box for Text */}
-                <div className="relative z-10 bg-white bg-opacity-80 p-4 rounded-lg mx-4"> {/* Changed bg-opacity-75 to bg-opacity-80 */}
+                <div className="relative z-10 bg-white bg-opacity-10 p-4 rounded-lg mx-4"> {/* Changed bg-opacity-80 to bg-opacity-10 */}
                   <p className="text-lg italic text-gray-900 mb-3"> {/* Changed text color to gray-900 */}
                     "{currentVerse.text}"
                   </p>
