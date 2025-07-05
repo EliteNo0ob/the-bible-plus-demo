@@ -4,21 +4,24 @@ import React, { useState, useEffect, useCallback } from 'react';
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home'); // 'home', 'read', 'community', 'discover'
   const [question, setQuestion] = useState('');
-  const [aiResponse, setAiResponse] = useState(null); // Corrected: Initialized with useState(null)
+  const [aiResponse, setAiResponse] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showDisclaimer, setShowDisclaimer] = useState(false);
-  const [username, setUsername] = useState('Brandon'); // Username set to Brandon
+  const [username, setUsername] = useState('Brandon');
   const [currentVerse, setCurrentVerse] = useState({});
   const [showModal, setShowModal] = useState(false);
   const [modalContent, setModalContent] = useState('');
-  const [showMoreMenu, setShowMoreMenu] = useState(false); // State for the More menu
-  const [showNotifications, setShowNotifications] = useState(true); // State for notifications list, initially true for badge demo
-  const [hasNewNotification, setHasNewNotification] = useState(true); // State to show notification badge - FIXED: Changed to useState(true)
-  const [isVerseActionMenuOpen, setIsVerseActionMenuOpen] = useState(false); // State to control main footer buttons
+  const [showMoreMenu, setShowMoreMenu] = useState(false);
+  const [showNotifications, setShowNotifications] = useState(true);
+  const [hasNewNotification, setHasNewNotification] = useState(true);
+  const [isVerseActionMenuOpen, setIsVerseActionMenuOpen] = useState(false);
+  // New state for the early stage disclaimer
+  const [showEarlyStageDisclaimer, setShowEarlyStageDisclaimer] = useState(true);
+
 
   // Publicly accessible image URLs for demo purposes.
-  const profilePicUrl = "https://placehold.co/40x40/000000/FFFFFF?text=BR"; // Placeholder for Brandon's profile, now B&W
-  const verseBgImageUrl = "https://images.unsplash.com/photo-1518066000714-cdcd8254735b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"; // Serene mountain lake (Unsplash)
+  const profilePicUrl = "https://placehold.co/40x40/000000/FFFFFF?text=BR";
+  const verseBgImageUrl = "https://images.unsplash.com/photo-1518066000714-cdcd8254735b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
 
   // Function to get time-based greeting
   const getGreeting = () => {
@@ -509,8 +512,8 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 flex justify-center items-center p-4">
-      {/* Simulated Mobile App Frame */}
-      <div className="relative w-full max-w-md h-[90vh] bg-gray-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col font-inter text-gray-100 border-8 border-gray-950">
+      {/* Simulated Mobile App Frame - Adjusted for a larger phone feel */}
+      <div className="relative w-full max-w-lg h-[90vh] bg-gray-800 rounded-3xl shadow-2xl overflow-hidden flex flex-col font-inter text-gray-100 border-8 border-gray-950">
         {/* Top Navigation Menu - Now Black */}
         <nav className="bg-black text-white flex justify-around items-center h-16 shadow-lg rounded-t-2xl">
           {/* Home */}
