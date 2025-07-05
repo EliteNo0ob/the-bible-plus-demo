@@ -3,7 +3,7 @@ import {
   Home, BookOpen, Users, Compass, MoreHorizontal,
   Heart, MessageCircle, Share2, Bookmark, FileText,
   Lightbulb, Search, Settings, Bell, User, Plus, Tag,
-  PenTool, TrendingUp, HandHelping, Globe, Sun, HelpCircle, Info, X // Import X for close icon
+  PenTool, TrendingUp, HandHelping, Globe, Sun, HelpCircle, Info, X
 } from 'lucide-react'; // Import Lucide React icons
 
 // Main App Component
@@ -26,8 +26,9 @@ const App = () => {
 
 
   // Publicly accessible image URLs for demo purposes.
-  const profilePicUrl = "https://placehold.co/40x40/000000/FFFFFF?text=BR";
-  const verseBgImageUrl = "https://images.unsplash.com/photo-1518066000714-cdcd8254735b?q=80&w=1974&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D";
+  // UPDATED: Using local paths now
+  const profilePicUrl = "/images/profile-br.png"; // Assuming you saved it as profile-br.png in public/images/
+  const verseBgImageUrl = "/images/verse-bg.jpg"; // Assuming you saved it as verse-bg.jpg in public/images/
 
   // Function to get time-based greeting
   const getGreeting = () => {
@@ -752,7 +753,7 @@ const App = () => {
                 // Fallback for image loading errors
                 onError={(e) => {
                   e.target.onerror = null; // Prevent infinite loop if fallback also fails
-                  e.target.src = 'https://placehold.co/40x40/000000/FFFFFF?text=BR';
+                  e.target.src = '/images/profile-br.png'; // Fallback to local
                 }}
               />
             </div>
@@ -812,7 +813,7 @@ const App = () => {
                     // Fallback for image loading errors
                     onError={(e) => {
                       e.target.onerror = null; // Prevent infinite loop if fallback also fails
-                      e.target.src = 'https://placehold.co/48x48/000000/FFFFFF?text=BR';
+                      e.target.src = '/images/profile-br.png'; // Fallback to local
                     }}
                   />
                 </div>
