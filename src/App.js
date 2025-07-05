@@ -1,4 +1,10 @@
 import React, { useState, useEffect, useCallback } from 'react';
+import {
+  Home, BookOpen, Users, Compass, MoreHorizontal,
+  Heart, MessageCircle, Share2, Bookmark, FileText,
+  Lightbulb, Search, Settings, Bell, User, Plus, Tag,
+  PenTool, TrendingUp, HandHelping, Globe, Sun, HelpCircle, Info, X // Import X for close icon
+} from 'lucide-react'; // Import Lucide React icons
 
 // Main App Component
 const App = () => {
@@ -320,7 +326,7 @@ const App = () => {
               className="absolute top-2 right-2 p-1 bg-gray-700 rounded-full text-gray-400 hover:text-[#C2B027] hover:bg-gray-600 transition-opacity opacity-0 group-hover:opacity-100 focus:opacity-100"
               title="View Commentary"
             >
-              <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z"></path></svg>
+              <MessageCircle className="w-4 h-4" /> {/* Lucide Icon */}
             </button>
           </div>
         ))}
@@ -335,7 +341,7 @@ const App = () => {
               (ESV)
             </button>
             <button onClick={handleSearchOnPage} className="p-2 rounded-full bg-gray-700 hover:bg-gray-600 transition-colors">
-              <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+              <Search className="w-6 h-6 text-white" /> {/* Lucide Icon */}
             </button>
           </div>
         )}
@@ -353,19 +359,19 @@ const App = () => {
             ))}
             {/* Action Buttons */}
             <button onClick={() => handleVerseAction('Save')} className="flex flex-col items-center text-xs hover:text-[#C2B027] transition-colors">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path></svg>
+              <Bookmark className="w-5 h-5" /> {/* Lucide Icon */}
               Save
             </button>
             <button onClick={() => handleVerseAction('Note')} className="flex flex-col items-center text-xs hover:text-[#C2B027] transition-colors">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"></path></svg>
+              <FileText className="w-5 h-5" /> {/* Lucide Icon */}
               Note
             </button>
             <button onClick={() => handleVerseAction('Share')} className="flex flex-col items-center text-xs hover:text-[#C2B027] transition-colors">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6.632L15.316 6.684m0 6.632a3 3 0 110-6.632m0 6.632l-6.632 3.316m0-3.316l6.632-3.316"></path></svg>
+              <Share2 className="w-5 h-5" /> {/* Lucide Icon */}
               Share
             </button>
             <button onClick={() => handleVerseAction('Ask AI')} className="flex flex-col items-center text-xs hover:text-[#C2B027] transition-colors">
-              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+              <Lightbulb className="w-5 h-5" /> {/* Lucide Icon */}
               Ask AI
             </button>
           </div>
@@ -518,22 +524,22 @@ const App = () => {
         <nav className="bg-black text-white flex justify-around items-center h-16 shadow-lg rounded-t-2xl">
           {/* Home */}
           <button onClick={() => setCurrentPage('home')} className={`flex flex-col items-center p-2 text-xs font-medium transition-colors ${currentPage === 'home' ? 'text-[#C2B027]' : 'hover:text-gray-400'}`}>
-            <svg className="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m0 0l-7 7m7-7v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            <Home className="w-6 h-6 mb-1" /> {/* Lucide Icon */}
             Home
           </button>
           {/* Read */}
           <button onClick={() => setCurrentPage('read')} className={`flex flex-col items-center p-2 text-xs font-medium transition-colors ${currentPage === 'read' ? 'text-[#C2B027]' : 'hover:text-gray-400'}`}>
-            <svg className="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253"></path></svg>
+            <BookOpen className="w-6 h-6 mb-1" /> {/* Lucide Icon */}
             Read
           </button>
           {/* Community */}
           <button onClick={() => setCurrentPage('community')} className={`flex flex-col items-center p-2 text-xs font-medium transition-colors ${currentPage === 'community' ? 'text-[#C2B027]' : 'hover:text-gray-400'}`}>
-            <svg className="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H2v-2a3 3 0 015.356-1.857M17 20v-9a2 2 0 00-2-2H9a2 2 0 00-2 2v9m-2 7h10a2 2 0 002-2V9a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zm0 0h10"></path></svg>
+            <Users className="w-6 h-6 mb-1" /> {/* Lucide Icon */}
             Community
           </button>
           {/* Discover */}
           <button onClick={() => setCurrentPage('discover')} className={`flex flex-col items-center p-2 text-xs font-medium transition-colors ${currentPage === 'discover' ? 'text-[#C2B027]' : 'hover:text-gray-400'}`}>
-            <svg className="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path></svg>
+            <Compass className="w-6 h-6 mb-1" /> {/* Lucide Icon */}
             Discover
           </button>
           {/* More */}
@@ -541,7 +547,7 @@ const App = () => {
             onClick={() => setShowMoreMenu(true)}
             className="flex flex-col items-center p-2 text-xs font-medium hover:text-gray-400 transition-colors"
           >
-            <svg className="w-6 h-6 mb-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 12h.01M12 12h.01M19 12h.01M6 12a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0zm7 0a1 1 0 11-2 0 1 1 0 012 0z"></path></svg>
+            <MoreHorizontal className="w-6 h-6 mb-1" /> {/* Lucide Icon */}
             More
           </button>
         </nav>
@@ -585,15 +591,15 @@ const App = () => {
               {/* Like, Comment, Share Buttons */}
               <div className="flex justify-around items-center mt-4 px-4">
                 <button onClick={() => handleSocialAction('Like')} className="flex items-center space-x-1 text-gray-300 hover:text-[#C2B027] transition-colors active:scale-95">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+                  <Heart className="w-5 h-5" /> {/* Lucide Icon */}
                   <span className="text-sm">Like</span>
                 </button>
                 <button onClick={() => handleSocialAction('Comment')} className="flex items-center space-x-1 text-gray-300 hover:text-[#C2B027] transition-colors active:scale-95">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.004 9.004 0 01-7.504-4.588M12 2.982c4.97 0 9 3.582 9 8s-4.03 8-9 8-9-3.582-9-8 4.03-8 9-8z"></path></svg>
+                  <MessageCircle className="w-5 h-5" /> {/* Lucide Icon */}
                   <span className="text-sm">Comment</span>
                 </button>
                 <button onClick={() => handleSocialAction('Share')} className="flex items-center space-x-1 text-gray-300 hover:text-[#C2B027] transition-colors active:scale-95">
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6.632L15.316 6.684m0 6.632a3 3 0 110-6.632m0 6.632l-6.632 3.316m0-3.316l6.632-3.316"></path></svg>
+                  <Share2 className="w-5 h-5" /> {/* Lucide Icon */}
                   <span className="text-sm">Share</span>
                 </button>
               </div>
@@ -607,28 +613,28 @@ const App = () => {
                   onClick={() => handleSubmit('Scripture Deep Dive')}
                   className="bg-gray-700 p-4 rounded-xl shadow-md border border-gray-600 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-gray-600 transition-colors active:scale-95"
                 >
-                  <svg className="w-8 h-8 text-[#C2B027] mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253"></path></svg>
+                  <BookOpen className="w-8 h-8 text-[#C2B027] mb-2" /> {/* Lucide Icon */}
                   <p className="text-base font-medium text-gray-200">Scripture Deep Dive</p>
                 </div>
                 <div
                   onClick={() => handleSubmit('Prayer & Reflection')}
                   className="bg-gray-700 p-4 rounded-xl shadow-md border border-gray-600 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-gray-600 transition-colors active:scale-95"
                 >
-                  <svg className="w-8 h-8 text-[#C2B027] mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M18.364 5.636l-3.536 3.536m0 0A9.002 9.002 0 0012 21a9.002 9.002 0 00-5.636-3.536m0 0L5.636 18.364m0 0A9.002 9.002 0 013 12c0-5.523 4.477-10 10-10a9.002 9.002 0 015.636 3.536m0 0L18.364 5.636M12 6v6m0 0l-3 3m3-3l3 3"></path></svg>
+                  <Heart className="w-8 h-8 text-[#C2B027] mb-2" /> {/* Lucide Icon */}
                   <p className="text-base font-medium text-gray-200">Prayer & Reflection</p>
                 </div>
                 <div
                   onClick={() => handleSubmit('Theological Concepts')}
                   className="bg-gray-700 p-4 rounded-xl shadow-md border border-gray-600 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-gray-600 transition-colors active:scale-95"
                 >
-                  <svg className="w-8 h-8 text-[#C2B027] mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.004 9.004 0 01-7.504-4.588M12 2.982c4.97 0 9 3.582 9 8s-4.03 8-9 8-9-3.582-9-8 4.03-8 9-8z"></path></svg>
+                  <Lightbulb className="w-8 h-8 text-[#C2B027] mb-2" /> {/* Lucide Icon */}
                   <p className="text-base font-medium text-gray-200">Theological Concepts</p>
                 </div>
                 <div
                   onClick={() => handleSubmit('Historical Context')}
                   className="bg-gray-700 p-4 rounded-xl shadow-md border border-gray-600 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-gray-600 transition-colors active:scale-95"
                 >
-                  <svg className="w-8 h-8 text-[#C2B027] mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H2v-2a3 3 0 015.356-1.857M17 20v-9a2 2 0 00-2-2H9a2 2 0 00-2 2v9m-2 7h10a2 2 0 002-2V9a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zm0 0h10"></path></svg>
+                  <BookOpen className="w-8 h-8 text-[#C2B027] mb-2" /> {/* Lucide Icon */}
                   <p className="text-base font-medium text-gray-200">Historical Context</p>
                 </div>
                 {/* New Thematic Journeys Card */}
@@ -636,7 +642,7 @@ const App = () => {
                   onClick={() => handleMoreMenuItemClick('Thematic Journeys')}
                   className="bg-gray-700 p-4 rounded-xl shadow-md border border-gray-600 flex flex-col items-center justify-center text-center cursor-pointer hover:bg-gray-600 transition-colors active:scale-95"
                 >
-                  <svg className="w-8 h-8 text-[#C2B027] mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6v6m0 0v6m0-6h6m0 0H6"></path></svg>
+                  <Compass className="w-8 h-8 text-[#C2B027] mb-2" /> {/* Lucide Icon */}
                   <p className="text-base font-medium text-gray-200">Thematic Journeys</p>
                 </div>
               </div>
@@ -754,13 +760,13 @@ const App = () => {
           {/* AI Button (Centered and less apparent) - Hidden when verse action menu is open */}
           {!isVerseActionMenuOpen && (
             <button className="p-2 bg-gray-700 rounded-full shadow-lg hover:bg-gray-600 transition-colors transform active:scale-95 flex-grow-0">
-              <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"></path></svg>
+              <Lightbulb className="w-7 h-7" /> {/* Lucide Icon */}
             </button>
           )}
           {/* Notifications Bell with Badge - Hidden when verse action menu is open */}
           {!isVerseActionMenuOpen && (
             <button onClick={handleNotificationsClick} className="relative text-white p-2 rounded-full hover:bg-gray-700 transition-colors flex-shrink-0">
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"></path></svg>
+              <Bell className="w-6 h-6" /> {/* Lucide Icon */}
               {hasNewNotification && (
                 <span className="absolute top-1 right-1 block h-3 w-3 rounded-full ring-2 ring-gray-800 bg-[#C2B027]"></span>
               )}
@@ -792,7 +798,7 @@ const App = () => {
                   onClick={() => setShowMoreMenu(false)}
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                  <X className="w-8 h-8" /> {/* Lucide Icon for close */}
                 </button>
               </div>
 
@@ -819,96 +825,96 @@ const App = () => {
               <ul className="space-y-4 flex-1">
                 <li>
                   <button onClick={() => handleMoreMenuItemClick('Friends')} className="flex items-center space-x-3 text-gray-300 hover:text-[#C2B027] transition-colors text-lg w-full text-left">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H2v-2a3 3 0 015.356-1.857M17 20v-9a2 2 0 00-2-2H9a2 2 0 00-2 2v9m-2 7h10a2 2 0 002-2V9a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zm0 0h10"></path></svg>
+                    <Users className="w-6 h-6" /> {/* Lucide Icon */}
                     <span>Friends</span>
                   </button>
                 </li>
                 <li>
                   <button onClick={() => handleMoreMenuItemClick('Prayer')} className="flex items-center space-x-3 text-gray-300 hover:text-[#C2B027] transition-colors text-lg w-full text-left">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5s3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18s-3.332.477-4.5 1.253"></path></svg>
+                    <Heart className="w-6 h-6" /> {/* Lucide Icon */}
                     <span>Prayer</span>
                   </button>
                 </li>
                 <li>
                   <button onClick={() => handleMoreMenuItemClick('Your Activity')} className="flex items-center space-x-3 text-gray-300 hover:text-[#C2B027] transition-colors text-lg w-full text-left">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path></svg>
+                    <TrendingUp className="w-6 h-6" /> {/* Lucide Icon */}
                     <span>Your Activity</span>
                   </button>
                 </li>
                 <li>
                   <button onClick={() => handleMoreMenuItemClick('Saved')} className="flex items-center space-x-3 text-gray-300 hover:text-[#C2B027] transition-colors text-lg w-full text-left">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"></path></svg>
+                    <Bookmark className="w-6 h-6" /> {/* Lucide Icon */}
                     <span>Saved</span>
                   </button>
                 </li>
                 {/* New: Custom Tags */}
                 <li>
                   <button onClick={() => handleMoreMenuItemClick('Custom Tags')} className="flex items-center space-x-3 text-gray-300 hover:text-[#C2B027] transition-colors text-lg w-full text-left">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M7 7h.01M7 3h5.99M7 3v4m10 0h.01M17 3h-5.99M17 3v4m-10 10h.01M7 21h5.99M7 21v-4m10 0h.01M17 21h-5.99M17 21v-4M12 12h.01M12 12v-4m0 4h4m-4 0H8"></path></svg>
+                    <Tag className="w-6 h-6" /> {/* Lucide Icon */}
                     <span>Custom Tags</span>
                   </button>
                 </li>
                 {/* New: Journaling */}
                 <li>
                   <button onClick={() => handleMoreMenuItemClick('Journaling')} className="flex items-center space-x-3 text-gray-300 hover:text-[#C2B027] transition-colors text-lg w-full text-left">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M12 16h.01"></path></svg>
+                    <PenTool className="w-6 h-6" /> {/* Lucide Icon */}
                     <span>Journaling</span>
                   </button>
                 </li>
                 {/* New: Reading Streaks */}
                 <li>
                   <button onClick={() => handleMoreMenuItemClick('Reading Streaks')} className="flex items-center space-x-3 text-gray-300 hover:text-[#C2B027] transition-colors text-lg w-full text-left">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>
+                    <BookOpen className="w-6 h-6" /> {/* Lucide Icon */}
                     <span>Reading Streaks</span>
                   </button>
                 </li>
                 {/* New: Study Groups */}
                 <li>
                   <button onClick={() => handleMoreMenuItemClick('Study Groups')} className="flex items-center space-x-3 text-gray-300 hover:text-[#C2B027] transition-colors text-lg w-full text-left">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H2v-2a3 3 0 015.356-1.857M17 20v-9a2 2 0 00-2-2H9a2 2 0 00-2 2v9m-2 7h10a2 2 0 002-2V9a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zm0 0h10M12 8c-1.657 0-3 1.343-3 3s1.343 3 3 3 3-1.343 3-3-1.343-3-3-3z"></path></svg>
+                    <Users className="w-6 h-6" /> {/* Lucide Icon */}
                     <span>Study Groups</span>
                   </button>
                 </li>
                 <li>
                   <button onClick={() => handleMoreMenuItemClick('Share The Bible +')} className="flex items-center space-x-3 text-gray-300 hover:text-[#C2B027] transition-colors text-lg w-full text-left">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6.632L15.316 6.684m0 6.632a3 3 0 110-6.632m0 6.632l-6.632 3.316m0-3.316l6.632-3.316"></path></svg>
+                    <Share2 className="w-6 h-6" /> {/* Lucide Icon */}
                     <span>Share The Bible +</span>
                   </button>
                 </li>
                 <li>
                   <button onClick={() => handleMoreMenuItemClick('About')} className="flex items-center space-x-3 text-gray-300 hover:text-[#C2B027] transition-colors text-lg w-full text-left">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                    <Info className="w-6 h-6" /> {/* Lucide Icon */}
                     <span>About</span>
                   </button>
                 </li>
                 <li>
                   <button onClick={() => handleMoreMenuItemClick('Giving')} className="flex items-center space-x-3 text-gray-300 hover:text-[#C2B027] transition-colors text-lg w-full text-left">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                    <HandHelping className="w-6 h-6" /> {/* Lucide Icon */}
                     <span>Giving</span>
                   </button>
                 </li>
                 <li>
                   <button onClick={() => handleMoreMenuItemClick('Language')} className="flex items-center space-x-3 text-gray-300 hover:text-[#C2B027] transition-colors text-lg w-full text-left">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 0112 15c0 1.657 1.007 3 2.238 3h.027a2.5 2.5 0 002.238-2.238V12c0-1.657-1.007-3-2.238-3H12c-1.231 0-2.238 1.343-2.238 3v.027a2.5 2.5 0 01-2.238 2.238H7.5M14 12h.01M17 12h.01"></path></svg>
+                    <Globe className="w-6 h-6" /> {/* Lucide Icon */}
                     <span>Language</span>
                   </button>
                 </li>
                 {/* New: Display Settings */}
                 <li>
                   <button onClick={() => handleMoreMenuItemClick('Display Settings')} className="flex items-center space-x-3 text-gray-300 hover:text-[#C2B027] transition-colors text-lg w-full text-left">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <Sun className="w-6 h-6" /> {/* Lucide Icon */}
                     <span>Display Settings</span>
                   </button>
                 </li>
                 <li>
                   <button onClick={() => handleMoreMenuItemClick('Settings')} className="flex items-center space-x-3 text-gray-300 hover:text-[#C2B027] transition-colors text-lg w-full text-left">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"></path><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>
+                    <Settings className="w-6 h-6" /> {/* Lucide Icon */}
                     <span>Settings</span>
                   </button>
                 </li>
                 <li>
                   <button onClick={() => handleMoreMenuItemClick('Help')} className="flex items-center space-x-3 text-gray-300 hover:text-[#C2B027] transition-colors text-lg w-full text-left">
-                    <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.228 9.228a4.5 4.5 0 116.364 0M12 20V10m0 0a4 4 0 01-4-4h8a4 4 0 01-4 4z"></path></svg>
+                    <HelpCircle className="w-6 h-6" /> {/* Lucide Icon */}
                     <span>Help</span>
                   </button>
                 </li>
@@ -927,7 +933,7 @@ const App = () => {
                   onClick={() => setShowNotifications(false)}
                   className="text-gray-400 hover:text-white transition-colors"
                 >
-                  <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                  <X className="w-8 h-8" /> {/* Lucide Icon for close */}
                 </button>
               </div>
 
