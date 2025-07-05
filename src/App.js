@@ -10,24 +10,25 @@ import {
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home'); // 'home', 'read', 'community', 'discover'
   const [question, setQuestion] = useState('');
+  // FIX: Corrected useState initialization for aiResponse from null to useState(null)
   const [aiResponse, setAiResponse] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showDisclaimer, setShowDisclaimer] = useState(false);
   const [username, setUsername] = useState('Brandon');
   const [currentVerse, setCurrentVerse] = useState({});
   const [showModal, setShowModal] = useState(false);
-  const [modalContent, setModalContent] = '';
-  const [showMoreMenu, setShowMoreMenu] = useState(false);
-  const [showNotifications, setShowNotifications] = useState(true);
+  const [modalContent, setModalContent] = useState('');
+  // FIX: Initialize showNotifications to false so it doesn't open on startup
+  const [showNotifications, setShowNotifications] = useState(false);
   const [hasNewNotification, setHasNewNotification] = useState(true);
+  // isVerseActionMenuOpen is now only used internally by BiblePage,
+  // but kept here for potential future global state needs if the bottom bar changes more dynamically.
+  // For now, the main footer's visibility is tied directly to currentPage !== 'read'.
   const [isVerseActionMenuOpen, setIsVerseActionMenuOpen] = useState(false);
-  // New state for the early stage disclaimer
-  const [showEarlyStageDisclaimer, setShowEarlyStageDisclaimer] = useState(true);
+  const [showMoreMenu, setShowMoreMenu] = useState(false);
 
 
   // Publicly accessible image URLs for demo purposes.
-  // UPDATED: Using local paths now
-  // Changed to .jpg as per user's uploaded file type
   const profilePicUrl = "/images/profile-br.jpg"; // Assuming you saved it as profile-br.jpg in public/images/
   const verseBgImageUrl = "/images/verse-bg.jpg"; // Assuming you saved it as verse-bg.jpg in public/images/
 
@@ -177,18 +178,23 @@ const App = () => {
   }, []);
 
   // --- BiblePage Component ---
-  const BiblePage = ({ onVerseActionMenuToggle, setShowModal, setModalContent }) => {
+  const BiblePage = ({ setShowModal, setModalContent }) => {
     const [selectedVerseIds, setSelectedVerseIds] = useState(new Set()); // Use a Set for multiple selections
     const [highlightedVerses, setHighlightedVerses] = useState({}); // { 'john3-16': 'bg-yellow-500', ... }
     const [showVerseActionMenu, setShowVerseActionMenu] = useState(false);
 
-    // Use useEffect to notify parent when showVerseActionMenu changes
+    // Effect to update showVerseActionMenu based on selection
     useEffect(() => {
-      onVerseActionMenuToggle(showVerseActionMenu);
-    }, [showVerseActionMenu, onVerseActionMenuToggle]);
+      const shouldShowMenu = selectedVerseIds.size > 0;
+      if (shouldShowMenu !== showVerseActionMenu) {
+        setShowVerseActionMenu(shouldShowMenu);
+      }
+    }, [selectedVerseIds, showVerseActionMenu]); // Depend on selectedVerseIds and showVerseActionMenu
 
     // Effect to clear selection when the menu is hidden (e.g., by navigating away or explicitly closing)
     useEffect(() => {
+      // This effect runs when showVerseActionMenu changes,
+      // if it becomes false and there were selected verses, clear them.
       if (!showVerseActionMenu && selectedVerseIds.size > 0) {
         setSelectedVerseIds(new Set());
       }
@@ -201,14 +207,6 @@ const App = () => {
           newSelected.delete(verseId); // Deselect if already selected
         } else {
           newSelected.add(verseId); // Select if not selected
-        }
-
-        // Determine if the menu should be shown based on current selection
-        const shouldShowMenu = newSelected.size > 0;
-
-        // Only update showVerseActionMenu if its state actually changes
-        if (shouldShowMenu !== showVerseActionMenu) {
-          setShowVerseActionMenu(shouldShowMenu);
         }
         return newSelected;
       });
@@ -223,7 +221,7 @@ const App = () => {
           });
           return newHighlighted;
         });
-        setShowVerseActionMenu(false); // This will trigger the useEffect to clear selection
+        setShowVerseActionMenu(false); // Close menu after action
       }
     };
 
@@ -236,7 +234,7 @@ const App = () => {
 
       setModalContent(`${action} feature for ${verseText} coming soon!`);
       setShowModal(true);
-      setShowVerseActionMenu(false); // This will trigger the useEffect to clear selection
+      setShowVerseActionMenu(false); // Close menu after action
       setTimeout(() => setShowModal(false), 2000);
     };
 
@@ -722,7 +720,6 @@ const App = () => {
 
         {currentPage === 'read' && (
           <BiblePage
-            onVerseActionMenuToggle={handleVerseActionMenuToggle}
             setShowModal={setShowModal} // Pass modal setters to BiblePage
             setModalContent={setModalContent} // Pass modal setters to BiblePage
           />
@@ -742,39 +739,38 @@ const App = () => {
           />
         )}
 
-        {/* Bottom Bar - Now Black */}
-        <footer className="flex items-center justify-between p-4 bg-black text-white shadow-md rounded-b-2xl h-16">
-          {/* Profile Picture */}
-          <button onClick={handleProfileClick} className="flex-shrink-0">
-            <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg border-2 border-white overflow-hidden">
-              <img
-                src={profilePicUrl}
-                alt="Profile"
-                className="w-full h-full object-cover"
-                // Fallback for image loading errors
-                onError={(e) => {
-                  e.target.onerror = null; // Prevent infinite loop if fallback also fails
-                  e.target.src = '/images/profile-br.jpg'; // Fallback to local .jpg
-                }}
-              />
-            </div>
-          </button>
-          {/* AI Button (Centered and less apparent) - Hidden when verse action menu is open */}
-          {!isVerseActionMenuOpen && (
+        {/* Conditional Bottom Bar for the App */}
+        {currentPage !== 'read' && (
+          <footer className="flex items-center justify-between p-4 bg-black text-white shadow-md rounded-b-2xl h-16">
+            {/* Profile Picture */}
+            <button onClick={handleProfileClick} className="flex-shrink-0">
+              <div className="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold text-lg border-2 border-white overflow-hidden">
+                <img
+                  src={profilePicUrl}
+                  alt="Profile"
+                  className="w-full h-full object-cover"
+                  // Fallback for image loading errors
+                  onError={(e) => {
+                    e.target.onerror = null; // Prevent infinite loop if fallback also fails
+                    e.target.src = '/images/profile-br.jpg'; // Fallback to local .jpg
+                  }}
+                />
+              </div>
+            </button>
+            {/* AI Button (Centered and less apparent) */}
             <button className="p-2 bg-gray-700 rounded-full shadow-lg hover:bg-gray-600 transition-colors transform active:scale-95 flex-grow-0">
               <Lightbulb className="w-7 h-7" /> {/* Lucide Icon */}
             </button>
-          )}
-          {/* Notifications Bell with Badge - Hidden when verse action menu is open */}
-          {!isVerseActionMenuOpen && (
+            {/* Notifications Bell with Badge */}
             <button onClick={handleNotificationsClick} className="relative text-white p-2 rounded-full hover:bg-gray-700 transition-colors flex-shrink-0">
               <Bell className="w-6 h-6" /> {/* Lucide Icon */}
               {hasNewNotification && (
                 <span className="absolute top-1 right-1 block h-3 w-3 rounded-full ring-2 ring-gray-800 bg-[#C2B027]"></span>
               )}
             </button>
-          )}
-        </footer>
+          </footer>
+        )}
+
 
         {/* Generic Modal for "Coming Soon" messages */}
         {showModal && (
