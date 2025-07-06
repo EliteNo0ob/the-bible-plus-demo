@@ -10,7 +10,6 @@ import {
 const App = () => {
   const [currentPage, setCurrentPage] = useState('home'); // 'home', 'read', 'community', 'discover'
   const [question, setQuestion] = useState('');
-  // FIX: Corrected useState initialization for aiResponse from null to useState(null)
   const [aiResponse, setAiResponse] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [showDisclaimer, setShowDisclaimer] = useState(false);
@@ -296,7 +295,7 @@ const App = () => {
     ];
 
     return (
-      <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gray-800 text-gray-100">
+      <div className="flex-1 overflow-y-auto p-6 space-y-4 bg-gray-800 text-gray-100 bible-page-content"> {/* Added bible-page-content class */}
         <h2 className="text-2xl font-bold text-gray-200 mb-4 text-center">John 3 (ESV)</h2>
         {bibleText.map(verse => (
           <div key={verse.id} className="relative group">
@@ -555,7 +554,7 @@ const App = () => {
         {/* Conditional Rendering of Pages */}
         {currentPage === 'home' && (
           // Home Page Content
-          <main className="flex-1 overflow-y-auto p-6 space-y-8 pb-4 bg-gray-800">
+          <main className="flex-1 overflow-y-auto p-6 space-y-8 pb-4 bg-gray-800 home-page-content"> {/* Added home-page-content class */}
             {/* Search Bar */}
             <section className="mb-6">
               <input
@@ -951,9 +950,25 @@ const App = () => {
           </div>
         )}
 
-        {/* CSS for typing animation dots */}
+        {/* Custom CSS to hide scrollbar */}
         <style>
           {`
+          /* For Webkit browsers (Chrome, Safari, Edge) */
+          .home-page-content::-webkit-scrollbar,
+          .bible-page-content::-webkit-scrollbar,
+          .community-page-content::-webkit-scrollbar,
+          .discover-page-content::-webkit-scrollbar {
+              display: none;
+          }
+
+          /* For Firefox */
+          .home-page-content,
+          .bible-page-content,
+          .community-page-content,
+          .discover-page-content {
+              scrollbar-width: none; /* Firefox */
+          }
+
           .typing-dots span {
             opacity: 0;
             animation: blink 1s infinite;
